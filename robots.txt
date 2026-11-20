@@ -1,5 +1,5 @@
 # Informational only: on a github.io project subpath crawlers read
-# https://dolome.github.io/robots.txt, not this file. Do not rely on it.
+# https://jukeclient.github.io/robots.txt, not this file. Do not rely on it.
 User-agent: *
 Allow: /
 

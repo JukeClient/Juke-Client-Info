@@ -1,6 +1,6 @@
 # Juke Client website
 
-Static, dependency-free landing site for Juke Client. It lives in `site/`; the desktop app build does not depend on it. Canonical home once published: `https://dolome.github.io/Juke-Client-Info/`. Until that URL actually serves the site, the canonical tags, `og:url`, `og:image`, sitemap and social links point to an empty URL.
+Static, dependency-free landing site for Juke Client. It lives in `site/`; the desktop app build does not depend on it. Canonical home: `https://jukeclient.github.io/Juke-Client-Info/`. GitHub Pages URLs are not redirected when a repository is transferred, so after a transfer the new URL must be built and verified before it is announced or resubmitted to search consoles.
 
 ## Preview locally
 
@@ -17,18 +17,18 @@ The only browser storage used by the site is the theme choice. There are no cook
 
 ## Publish with GitHub Pages
 
-The canonical site is served from the **public** `dolome/Juke-Client-Info` repository, not from the private app repository. Pages from a private repository requires a paid GitHub plan (Pro, Team or Enterprise); a public project repository works on the free plan.
+The canonical site is served from the **public** `JukeClient/Juke-Client-Info` repository, not from the private app repository. Pages from a private repository requires a paid GitHub plan (Pro, Team or Enterprise); a public project repository works on the free plan.
 
 Branch deployment cannot serve `site/` from a separate folder; **Deploy from a branch** only offers `/` and `/docs`. Use GitHub Actions:
 
-1. Copy the contents of this `site/` directory to the root of `dolome/Juke-Client-Info`.
+1. Copy the contents of this `site/` directory to the root of `JukeClient/Juke-Client-Info`.
 2. Copy `.github/workflows/pages.yml` to `Juke-Client-Info/.github/workflows/pages.yml`.
 3. In the Info repository settings, open **Pages → Build and deployment → Source** and select **GitHub Actions**.
 4. Push to `main` there (or run the workflow manually). The workflow uploads the site files as the Pages artifact and deploys them.
 
 There is no npm install, build step or bundler. `.github/workflows/pages.yml` in this private `Juke-Client` repository deploys that repository's own `/Juke-Client/` Pages site; it is **not** the canonical deployment and can be deleted once Info is live.
 
-Do not share the canonical URL or submit `sitemap.xml` until `https://dolome.github.io/Juke-Client-Info/` actually loads. Until then, the metadata and community links resolve to an empty address.
+Do not share the canonical URL or submit `sitemap.xml` until `https://jukeclient.github.io/Juke-Client-Info/` returns 200. After a repository transfer the previous `dolome.github.io` URL stops serving the site, so treat the new Pages URL as a fresh publication.
 
 ## Security and privacy
 
@@ -38,20 +38,20 @@ Do not share the canonical URL or submit `sitemap.xml` until `https://dolome.git
 - Every external link uses `target="_blank"` with `rel="noopener noreferrer"` and an accessible new-tab notice. Discord, Telegram and Reddit are managed by third parties; check those links periodically for expiry or account changes. `.github/workflows/links.yml` runs Lychee weekly to catch broken policy and community links. The same workflow runs `.github/scripts/check_privacy_hosts.py`, which extracts hosts from the Rust request URLs, download allowlists and updater config and fails if any of them is missing from the `<code>` spans in `privacy.html`. Update the Privacy table in the same commit when an allowlist changes.
 - Directives that only work as HTTP response headers (`frame-ancestors`, `X-Frame-Options`, `report-uri`) are intentionally omitted. GitHub Pages cannot send custom headers, and their meta-tag forms are ignored by browsers.
 - `connect-src 'self'` is kept because Lighthouse requests `/robots.txt` from the origin root. With `connect-src 'none'` that request is blocked and the SEO audit can report a failure, even though the site itself makes no fetch calls. A 404 response for that root request is harmless; only the blocked request is a problem.
-- `robots.txt`, `sitemap.xml`, `404.html`, canonical URLs and Open Graph/Twitter metadata are included. On a github.io project subpath crawlers and Lighthouse read `https://dolome.github.io/robots.txt`, not `/Juke-Client-Info/robots.txt`, so the project copy is informational only; it starts with a comment saying so. A `Sitemap:` line there would be read from the wrong root and would not work. Submit `https://dolome.github.io/Juke-Client-Info/sitemap.xml` manually **only after the site loads**, in **Google Search Console** and **Bing Webmaster Tools**.
-- `404.html` uses absolute `/Juke-Client-Info/...` URLs for every asset and link, because GitHub Pages serves it for missing paths at any nesting level. `<base>` is not used because the CSP sets `base-uri 'none'`. When moving to a custom domain, update the deployment base in one place — search for the literal `/Juke-Client-Info/` in `404.html` and for `dolome.github.io/Juke-Client-Info` in `sitemap.xml`, `index.html`, `privacy.html`, `terms.html`, `changelog.html` and this README.
+- `robots.txt`, `sitemap.xml`, `404.html`, canonical URLs and Open Graph/Twitter metadata are included. On a github.io project subpath crawlers and Lighthouse read `https://jukeclient.github.io/robots.txt`, not `/Juke-Client-Info/robots.txt`, so the project copy is informational only; it starts with a comment saying so. A `Sitemap:` line there would be read from the wrong root and would not work. Submit `https://jukeclient.github.io/Juke-Client-Info/sitemap.xml` manually **only after the site loads**, in **Google Search Console** and **Bing Webmaster Tools**.
+- `404.html` uses absolute `/Juke-Client-Info/...` URLs for every asset and link, because GitHub Pages serves it for missing paths at any nesting level. `<base>` is not used because the CSP sets `base-uri 'none'`. When moving to a custom domain, update the deployment base in one place — search for the literal `/Juke-Client-Info/` in `404.html` and for `jukeclient.github.io/Juke-Client-Info` in `sitemap.xml`, `index.html`, `privacy.html`, `terms.html`, `changelog.html` and this README.
 - The web manifest uses `display: browser` and provides separate maskable icons. It does not promise an installable offline app.
 
 ## Content and product status
 
 - Platform wording is deliberately cautious: the site describes a Windows-first launch, with macOS and Linux listed as planned. Keep the title, description, Open Graph tags, intro, download button and Requirements section consistent if that changes.
-- Juke Client is proprietary. The `dolome/Juke-Client` repository is private; `dolome/Juke-Client-Info` contains project information only, and `dolome/Juke-Client-Releases` contains release assets only. The FAQ says this directly instead of offering a misleading Source link.
-- The download button is intentionally disabled with `aria-disabled="true"` and a visible “In development” note. When public builds exist, replace that single button with a real link to `https://github.com/dolome/Juke-Client-Releases/releases/latest`, update the note with the available platform, and keep the one-CTA layout.
+- Juke Client is proprietary. The `JukeClient/Juke-Client` repository is private; `JukeClient/Juke-Client-Info` contains project information only, and `JukeClient/Juke-Client-Releases` contains release assets only. The FAQ says this directly instead of offering a misleading Source link.
+- The download button is intentionally disabled with `aria-disabled="true"` and a visible “In development” note. When public builds exist, replace that single button with a real link to `https://github.com/JukeClient/Juke-Client-Releases/releases/latest`, update the note with the available platform, and keep the one-CTA layout.
 - The site does not duplicate the launcher version number. `changelog.html` is intentionally empty until the first public release; when entries are added, date each one there. Launcher version files (`package.json`, `src-tauri/Cargo.toml`, `src-tauri/tauri.conf.json`) belong to the app part of the same private repository, outside `site/`, and are not duplicated on the site.
 - The “Built for speed” card claims up to ten times faster than the most popular launchers. It is a marketing claim without bundled benchmark data; keep evidence for the comparison before publishing, or soften the wording.
 - The bundled screenshot comes from a development build and shows an older Minecraft version. Its `alt` text is version-neutral on purpose; replace all light/dark PNG, WebP and AVIF variants together when capturing a current screenshot.
 - Update installers are signed with a Juke Client minisign key. The installer itself has no Authenticode certificate yet, so the FAQ explains possible SmartScreen warnings.
-- The operator is published as the `dolome` account on the Privacy and Terms pages. Privacy requests go to the project alias **JukeClient@proton.me**, which is also published on both pages; the personal address is deliberately not published. Verify that the alias mailbox exists before publishing. If an Impressum or a named legal entity and address are required for your publishing location, a nickname alone is unlikely to be enough — obtain a legal review before the public release. This README is not legal advice.
+- The operator is published as the `JukeClient` account on the Privacy and Terms pages. Privacy requests go to the project alias **JukeClient@proton.me**, which is also published on both pages; the personal address is deliberately not published. Verify that the alias mailbox exists before publishing. If an Impressum or a named legal entity and address are required for your publishing location, a nickname alone is unlikely to be enough — obtain a legal review before the public release. This README is not legal advice.
 - The footer uses the current trademark line, “"Minecraft" is a trademark of Mojang Synergies AB”, together with the recommended NOT AN OFFICIAL MINECRAFT PRODUCT disclaimer. The site deliberately makes no claim of “compliance with the Minecraft Usage Guidelines”; review the guidelines and your product yourself before making such a claim.
 
 ## Files
