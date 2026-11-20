@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy — Juke Client</title>
+  <meta name="description" content="What Juke Client and this website store locally, which services they contact, and how to remove your data.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; manifest-src 'self'; media-src 'none'; connect-src 'self'; img-src 'self' data:; font-src 'none'; script-src 'self'; style-src 'self'; upgrade-insecure-requests">
+  <meta name="theme-color">
+  <link rel="canonical" href="https://dolome.github.io/Juke-Client-Info/privacy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Juke Client">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Privacy — Juke Client">
+  <meta property="og:description" content="What Juke Client and this website store locally, which services they contact, and how to remove your data.">
+  <meta property="og:url" content="https://dolome.github.io/Juke-Client-Info/privacy.html">
+  <meta property="og:image" content="https://dolome.github.io/Juke-Client-Info/assets/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Juke Client launcher preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy — Juke Client">
+  <meta name="twitter:description" content="Local data, network requests and deletion steps for the Juke Client launcher and website.">
+  <meta name="twitter:image" content="https://dolome.github.io/Juke-Client-Info/assets/social-preview.png">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/juke-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme-init.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/juke-icon.png" alt="" width="22" height="22">
+        <span>Juke Client</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#questions">Questions</a>
+        <a href="index.html#community">Community</a>
+      </nav>
+      <div class="header-actions">
+        <div class="theme-control">
+          <label class="visually-hidden" for="theme-select">Colour theme</label>
+          <select class="theme-select" id="theme-select" data-theme-select aria-keyshortcuts="S">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+          <span></span><span></span>
+        </button>
+      </div>
+      <span class="visually-hidden" id="theme-status" role="status" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <article class="prose">
+        <p class="eyebrow">Last updated <time datetime="2026-11-20">20 November 2026</time></p>
+        <h1>Privacy</h1>
+        <p class="prose-lead">This page explains what the Juke Client launcher and this website store locally, which services they contact, and how to remove that data. It describes the current development build; final terms will be published with the first public release.</p>
+
+        <h2>At a glance</h2>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Summary of data handling, scrollable table">
+          <table>
+            <caption>Summary of data handling</caption>
+            <thead><tr><th scope="col">Area</th><th scope="col">What happens</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">On your computer</th><td>Settings, profiles, game files, worlds, logs, an optional custom skin, your local friends list and one theme preference are stored locally.</td></tr>
+              <tr><th scope="row">Over the network</th><td>Only requests needed for Microsoft sign-in, Mojang version metadata and game downloads, Java runtime downloads, loader metadata and files (Fabric, Forge, NeoForge and Quilt), mod metadata and downloads, release news and update checks.</td></tr>
+              <tr><th scope="row">Analytics</th><td>None. No analytics, telemetry, crash upload or advertising trackers are used.</td></tr>
+              <tr><th scope="row">Your password</th><td>Never collected. Microsoft sign-in happens in the system browser.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Data stored by the launcher</h2>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Launcher data categories, scrollable table">
+          <table class="table-wide">
+            <caption>Launcher data categories</caption>
+            <thead><tr><th scope="col">Data</th><th scope="col">Where it stays</th><th scope="col">Purpose</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Settings, profiles, mods and worlds</th><td>The launcher's application data folder or the profile folders you choose.</td><td>Run the launcher and keep profiles separate.</td></tr>
+              <tr><th scope="row">Custom skin</th><td>A PNG you pick yourself with the local file dialog, saved as <code>custom-skin.png</code> in the launcher's application data folder.</td><td>Preview the skin locally. It is read from disk and is never uploaded — the launcher does not send skins to Mojang or any other service.</td></tr>
+              <tr><th scope="row">Local friends data</th><td>Player nicknames you add in the launcher's friends panel, plus blocked names and local message history, in the same local settings file.</td><td>Keep a personal list and message history on this computer. There is no account-wide friends service and nothing is synced or uploaded.</td></tr>
+              <tr><th scope="row">Microsoft refresh token and CurseForge key</th><td>The operating system's credential store where available: Windows Credential Manager, macOS Keychain or a Linux keyring.</td><td>Keep you signed in and remember an optional API key. Features that need secure storage are unavailable when it cannot be used.</td></tr>
+              <tr><th scope="row">Microsoft access token</th><td>Backend process memory only; passed to Java when a game starts.</td><td>Launch Minecraft with your account.</td></tr>
+              <tr><th scope="row">Diagnostic and game logs</th><td>Local files only. Launcher logs are capped at 5 MB per session with the five newest files rotated.</td><td>Troubleshooting. Copying a log uses the local clipboard and uploads nothing.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Data handled by this website</h2>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Website storage and server logs, scrollable table">
+          <table class="table-wide">
+            <caption>Website storage and server logs</caption>
+            <thead><tr><th scope="col">Item</th><th scope="col">What it contains</th><th scope="col">Why and how long</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Theme preference</th><td><code>juke-site-theme</code> in your browser's <code>localStorage</code>, holding only <code>light</code> or <code>dark</code>.</td><td>Remembers your choice on this site. Clear it in browser site settings; it is not sent to a server and contains no identifier.</td></tr>
+              <tr><th scope="row">GitHub Pages request logs</th><td>IP address, request time, URL, user agent and similar standard web-server data.</td><td>GitHub uses these logs to serve the files and protect the service. An IP address is personal data under the GDPR. This site has no analytics script and does not read those logs. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub privacy statement<span class="visually-hidden"> (opens in a new tab)</span></a>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>This site has no forms, accounts, cookies, analytics or third-party scripts. The theme starts in System mode and follows your system setting until you choose Light or Dark with the header select.</p>
+
+        <h2>Network connections</h2>
+        <p>Each request below is made only for the feature named. Downloaded files are checked against available hashes when the provider supplies them. Links in the Service column point to the provider's privacy information where one is published.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Third-party services contacted by the launcher, scrollable table">
+          <table class="table-wide">
+            <caption>Third-party services contacted by the launcher</caption>
+            <thead><tr><th scope="col">Service</th><th scope="col">Why</th><th scope="col">When</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="https://www.microsoft.com/en-us/privacy/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft / Xbox sign-in<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>Sign-in, account ownership and token refresh via <code>login.microsoftonline.com</code>, <code>user.auth.xboxlive.com</code>, <code>xsts.auth.xboxlive.com</code> and <code>api.minecraftservices.com</code>.</td><td>When you sign in or a token is refreshed.</td></tr>
+              <tr><th scope="row"><a href="https://www.minecraft.net/en-us/privacy" target="_blank" rel="noopener noreferrer">Minecraft / Mojang services<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>The version manifest and per-version metadata from <code>piston-meta.mojang.com</code>, the game client from <code>piston-data.mojang.com</code>, libraries from <code>libraries.minecraft.net</code>, and assets from <code>resources.download.minecraft.net</code>. Older metadata or redirects can also use <code>launcher.mojang.com</code> and <code>launchermeta.mojang.com</code>. The same manifest supplies recent releases in the News view. Game-file hosts are restricted to an allowlist and HTTPS redirects.</td><td>When listing or installing versions, starting a game, or opening the News view.</td></tr>
+              <tr><th scope="row"><a href="https://fabricmc.net/" target="_blank" rel="noopener noreferrer">Fabric<span class="visually-hidden"> (opens in a new tab)</span></a><br><span class="table-note">Project site; no separate privacy policy published.</span></th><td>Loader metadata from <code>meta.fabricmc.net</code> and loader files from <code>maven.fabricmc.net</code>.</td><td>When you install or use Fabric.</td></tr>
+              <tr><th scope="row"><a href="https://files.minecraftforge.net/static/privacy.html" target="_blank" rel="noopener noreferrer">Forge<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>Promotions metadata from <code>files.minecraftforge.net</code> and installer files from <code>maven.minecraftforge.net</code>.</td><td>When you install or use Forge.</td></tr>
+              <tr><th scope="row"><a href="https://neoforged.net/" target="_blank" rel="noopener noreferrer">NeoForge<span class="visually-hidden"> (opens in a new tab)</span></a><br><span class="table-note">Project site; no separate privacy policy published.</span></th><td>Maven metadata and installers from <code>maven.neoforged.net</code> and <code>mirrors.neoforged.net</code>.</td><td>When you install or use NeoForge.</td></tr>
+              <tr><th scope="row"><a href="https://quiltmc.org/en/legal/" target="_blank" rel="noopener noreferrer">Quilt<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>Loader metadata from <code>meta.quiltmc.org</code> and loader files from <code>maven.quiltmc.org</code>.</td><td>When you install or use Quilt.</td></tr>
+              <tr><th scope="row"><a href="https://www.eclipse.org/legal/privacy" target="_blank" rel="noopener noreferrer">Adoptium / Eclipse Temurin<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>Runtime metadata from <code>api.adoptium.net</code>; the archive comes from Adoptium or GitHub release hosts (<code>github.com</code>, <code>githubusercontent.com</code>).</td><td>When a runtime is requested or automatically installed.</td></tr>
+              <tr><th scope="row"><a href="https://modrinth.com/legal/privacy" target="_blank" rel="noopener noreferrer">Modrinth<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>Mod search and project data from <code>api.modrinth.com</code>; mod files from <code>cdn.modrinth.com</code>. Imported modpack files can also come from <code>github.com</code>, <code>githubusercontent.com</code>, <code>raw.githubusercontent.com</code> or <code>gitlab.com</code> when the pack points there.</td><td>When you browse or download from the catalog.</td></tr>
+              <tr><th scope="row"><a href="https://legal.overwolf.com/docs/overwolf/platform/platform-privacy-policy" target="_blank" rel="noopener noreferrer">CurseForge<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>Mod metadata from <code>api.curseforge.com</code>; modpack files from <code>curseforge.com</code> and <code>forgecdn.net</code> hosts, icons from <code>media.forgecdn.net</code>.</td><td>When you use CurseForge features and store an optional API key.</td></tr>
+              <tr><th scope="row"><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub releases<span class="visually-hidden"> (opens in a new tab)</span></a></th><td>The updater manifest is read from <code>https://github.com/dolome/Juke-Client-Releases/releases/latest/download/latest.json</code>; the signed installer is fetched from the release host named in that manifest.</td><td>At startup and when you choose Check for updates.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The update request exposes your IP address to GitHub and includes the launcher version and target platform. It contains no identifier of our own, no profile, world or game data. If you accept an update, the installer is verified with a Juke Client minisign key before installation.</p>
+
+        <h2>What is not sent</h2>
+        <ul class="check-list">
+          <li>No crash reports, logs, skins, worlds, profiles or local friends data are uploaded automatically.</li>
+          <li>No Microsoft passwords are collected. The authorization code arrives only on a temporary loopback callback; the <code>juke-client://</code> return link carries no code or token.</li>
+          <li>We attach no identifier of our own to update checks or website visits. Providers and hosting services may still see standard connection data such as your IP address.</li>
+        </ul>
+
+        <h2>Age</h2>
+        <p>Minecraft has a young audience, but Juke Client and this website are not intended for children. The age at which a person can consent to online services varies by country, so check the rules where you live. This site collects no personal data, and Microsoft handles account sign-in under its own terms. We do not ask children to provide personal data to this website or to the project contact address. Parents or guardians with questions about contact with the project can use the address below; please do not include personal data in the message.</p>
+
+        <h2>Removing data</h2>
+        <ol class="prose-list">
+          <li>Use the operating system's uninstall control to remove the launcher application.</li>
+          <li>Open the launcher's profile manager and delete any profile you no longer need. Deleting a profile moves its game directory to the operating-system trash.</li>
+          <li>Delete the launcher's application data folder if you want to remove remaining settings, logs, your custom skin and local friends data. Keep any worlds you want to preserve first.</li>
+          <li>Remove saved credentials from Windows Credential Manager (or your platform's keychain) if you want to discard the sign-in token and optional CurseForge key.</li>
+          <li>To remove the site's theme choice, clear site data for this page in your browser.</li>
+        </ol>
+
+        <h2>Contact</h2>
+        <p>This site and the project are operated by <strong>dolome</strong> (GitHub: <code>dolome</code>). Questions about this page, data handling, or requests to access or delete personal data can be sent to the project-only address <a href="mailto:JukeClient@proton.me">JukeClient@proton.me</a>. Please do not post tokens, passwords or personal data in public channels. If your jurisdiction requires a legal notice with a registered name and address, request those details at the same address.</p>
+
+        <p class="prose-back"><a href="index.html">&larr; Back to Juke Client</a> · <a href="terms.html">Terms</a></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer site-footer-simple">
+    <div class="container footer-bottom">
+      <p>© 2026 dolome. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>"Minecraft" is a trademark of Mojang Synergies AB.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Informational only: on a github.io project subpath crawlers read
+# https://dolome.github.io/robots.txt, not this file. Do not rely on it.
+User-agent: *
+Allow: /
+
+# sitemap.xml is submitted through Google Search Console and Bing Webmaster
+# Tools. A Sitemap: line here would be read from the domain root, which is not
+# under this project's control on github.io subpaths.

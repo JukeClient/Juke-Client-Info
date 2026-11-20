@@ -1,53 +1,256 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0c12">
-<link rel="icon" type="image/svg+xml" href="assets/juke-icon.svg">
-<meta name="description" content="Juke Client is a desktop launcher for Minecraft: Java Edition on Windows, macOS, and Linux.">
-<title>Juke Client — Dodge the setup</title>
-<style>
-:root{color-scheme:dark;--bg:#0b0c12;--card:#151722;--line:#292c3b;--text:#f4f5fb;--muted:#a6aabc;--mint:#b8f4d5;--violet:#aaa3ff;--max:1040px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 82% 5%,#252240 0,transparent 34rem),radial-gradient(ellipse at 4% 34%,#10231e 0,transparent 28rem),var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850;letter-spacing:.18em}.logo{width:44px;height:44px;border:1px solid #b8f4d577;border-radius:14px;display:grid;place-items:center;background:#b8f4d510;overflow:hidden}.logo img{width:100%;height:100%;padding:3px;object-fit:contain}nav{display:flex;gap:24px;color:var(--muted);font-size:.92rem}nav a{text-decoration:none}
-.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(250px,.8fr);align-items:center;gap:30px;padding:88px 0 68px}.hero-copy{position:relative;z-index:1}.hero-art{min-height:340px;display:grid;place-items:center;position:relative}.hero-orbit{position:absolute;width:290px;aspect-ratio:1;border:1px solid #aaa3ff30;border-radius:50%;box-shadow:0 0 0 34px #aaa3ff08,0 0 0 68px #aaa3ff05}.hero-logo-frame{position:relative;width:min(245px,75%);aspect-ratio:1;display:grid;place-items:center;padding:29px;border:1px solid #b8f4d533;border-radius:36px;background:linear-gradient(145deg,#1d2030,#10121c);box-shadow:0 28px 80px #0008,0 0 45px #b8f4d514}.hero-logo-frame img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 12px 24px #0008)}.eyebrow,.kicker{margin:0 0 10px;color:var(--mint);text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:800}h1{font-size:clamp(3.1rem,8vw,6rem);line-height:.98;letter-spacing:-.075em;margin:20px 0;max-width:850px}h1 span{color:var(--mint)}.subtitle{margin:0;color:var(--muted);font-size:1.1rem}.brand-note{margin:10px 0 0;color:#84899d;font-size:.82rem}.brand-note em{color:#bfc4d4}.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:28px}.btn{min-height:46px;padding:10px 17px;border-radius:11px;text-decoration:none;font-weight:750;display:inline-flex;align-items:center}.primary{background:var(--mint);color:#101510}.secondary{border:1px solid var(--line);background:#ffffff08}.platforms{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}.platforms span{border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:#c5c9d8;font-size:.8rem}
-section{padding:63px 0}.kicker{color:var(--violet)}h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.05em;margin:0 0 14px}.intro{max-width:770px;color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:25px}.card{padding:21px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#191b28e8,#11131bcc)}.icon{height:36px;width:36px;display:grid;place-items:center;border-radius:11px;color:var(--mint);background:#b8f4d511;margin-bottom:13px;font-weight:800}h3{font-size:1.02rem;margin:0 0 6px}.card p,.platform-card p{color:var(--muted);font-size:.92rem;margin:0}.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.platform-card{padding:17px;border:1px solid var(--line);border-radius:14px;background:#ffffff06}.platform-card strong{display:block;margin-bottom:3px}.privacy-link{display:inline-block;margin-top:16px;color:var(--mint);text-underline-offset:4px}.status{padding:19px 21px;border:1px solid #aaa3ff40;border-radius:14px;background:#aaa3ff0d;color:var(--muted)}.status strong{color:var(--text)}footer{border-top:1px solid #ffffff12;margin-top:40px;padding:25px 0 35px;color:#9a9eb0;font-size:.82rem}footer strong{color:#d0d3df}
-@media(max-width:700px){.wrap{width:min(var(--max),calc(100% - 32px))}.hero{grid-template-columns:1fr;gap:5px;padding:70px 0 54px}.hero-art{min-height:225px}.hero-orbit{width:185px}.hero-logo-frame{width:155px;padding:18px}.grid{grid-template-columns:1fr 1fr}.platform-grid{grid-template-columns:1fr}nav{gap:13px;font-size:.82rem}}
-@media(max-width:470px){.grid{grid-template-columns:1fr}nav a:last-child{display:none}.hero{padding-top:58px}.hero-art{min-height:185px}.hero-orbit{width:155px}.hero-logo-frame{width:132px;padding:15px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juke Client — Minecraft launcher for Windows</title>
+  <meta name="description" content="Juke Client is an independent Minecraft: Java Edition launcher for Windows. Manage versions, profiles, loaders and mods in one app. macOS and Linux are planned.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; manifest-src 'self'; media-src 'none'; connect-src 'self'; img-src 'self' data:; font-src 'none'; script-src 'self'; style-src 'self'; upgrade-insecure-requests">
+  <meta name="theme-color">
+  <link rel="canonical" href="https://dolome.github.io/Juke-Client-Info/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Juke Client">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Juke Client — Minecraft launcher for Windows">
+  <meta property="og:description" content="Manage Minecraft versions, isolated profiles, mod loaders and mods in one independent Windows launcher. macOS and Linux are planned.">
+  <meta property="og:url" content="https://dolome.github.io/Juke-Client-Info/">
+  <meta property="og:image" content="https://dolome.github.io/Juke-Client-Info/assets/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Juke Client launcher preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Juke Client — Minecraft launcher for Windows">
+  <meta name="twitter:description" content="Versions, profiles, loaders and mods in one independent Windows launcher. macOS and Linux are planned.">
+  <meta name="twitter:image" content="https://dolome.github.io/Juke-Client-Info/assets/social-preview.png">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/juke-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme-init.js"></script>
 </head>
 <body>
-<header class="wrap">
-<a class="brand" href="#" aria-label="Juke Client home"><span class="logo" aria-hidden="true"><img src="assets/juke-icon.svg" alt=""></span>JUKE</a>
-<nav aria-label="Main navigation"><a href="#about">About</a><a href="#features">Features</a><a href="#privacy">Privacy</a></nav>
-</header>
-<main>
-<section class="wrap hero">
-<div class="hero-copy">
-<p class="eyebrow">Minecraft: Java Edition launcher</p>
-<h1>Dodge the setup.<br><span>Get into the game.</span></h1>
-<p class="subtitle">A desktop launcher for Minecraft: Java Edition<br>Windows · macOS · Linux</p>
-<p class="brand-note"><em>Juke</em> — a small nod to an evasive move.</p>
-<div class="actions"><a class="btn primary" href="#features">Explore features&nbsp; →</a><a class="btn secondary" href="#status">Project status</a></div>
-<div class="platforms" aria-label="Target platforms"><span>Windows</span><span>macOS</span><span>Linux</span><span>Minecraft Java Edition</span></div>
-</div>
-<div class="hero-art" aria-hidden="true"><div class="hero-orbit"></div><div class="hero-logo-frame"><img src="assets/juke-icon.svg" alt=""></div></div>
-</section>
-<section class="wrap" id="about"><p class="kicker">About</p><h2>Your Minecraft setup,<br>all in one place.</h2><p class="intro">Juke Client brings Minecraft version management, isolated game profiles, Microsoft sign-in, supported mod loaders, mod discovery, and launching together in one desktop app.</p></section>
-<section class="wrap" id="features"><p class="kicker">Features</p><h2>Everything around the game.</h2>
-<div class="grid">
-<article class="card"><div class="icon" aria-hidden="true">↗</div><h3>Account &amp; Launch</h3><p>Sign in with Microsoft, check the associated Minecraft Java profile, and launch Vanilla, Fabric, Forge, NeoForge, or Quilt.</p></article>
-<article class="card"><div class="icon" aria-hidden="true">▦</div><h3>Profile Management</h3><p>Keep game versions, mods, resource packs, shaders, and worlds in separate profiles.</p></article>
-<article class="card"><div class="icon" aria-hidden="true">⌁</div><h3>Environment &amp; Tools</h3><p>Choose or download a compatible Temurin Java runtime, check Minecraft server status, and read official release news.</p></article>
-</div></section>
-<section class="wrap" aria-labelledby="platform-title"><p class="kicker">Platforms</p><h2 id="platform-title">Built for desktop.</h2><div class="platform-grid">
-<div class="platform-card"><strong>Windows</strong><p>x64 installer and portable build</p></div><div class="platform-card"><strong>macOS</strong><p>DMG and ZIP packages</p></div><div class="platform-card"><strong>Linux</strong><p>AppImage and DEB packages</p></div>
-</div></section>
-<section class="wrap" id="privacy"><p class="kicker">Privacy &amp; Security</p><h2>Your account stays yours.</h2><p class="intro">Microsoft sign-in opens in a separate window. The launcher stores settings and profiles locally, and uses Electron <code>safeStorage</code> for refresh tokens when operating-system secure storage is available. Juke Client does not store your Microsoft password or bypass Minecraft account ownership.</p><a class="privacy-link" href="https://github.com/dolome/Juke-Client-Info/blob/main/PRIVACY.md">Read the technical privacy details&nbsp; →</a></section>
-<section class="wrap" id="status"><div class="status"><strong>In active development.</strong> Public downloads are not available yet. The source code is kept in a private repository; this page contains project information and documentation only.</div></section>
-</main>
-<footer><div class="wrap"><strong>Not an official Minecraft product. Not approved by, associated with, or endorsed by Mojang Studios or Microsoft.</strong><br>Minecraft is a trademark of Microsoft Corporation.</div></footer>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <img src="assets/juke-icon.png" alt="" width="22" height="22">
+        <span>Juke Client</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#questions">Questions</a>
+        <a href="#community">Community</a>
+      </nav>
+      <div class="header-actions">
+        <div class="theme-control">
+          <label class="visually-hidden" for="theme-select">Colour theme</label>
+          <select class="theme-select" id="theme-select" data-theme-select aria-keyshortcuts="S">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+          <span></span><span></span>
+        </button>
+      </div>
+      <span class="visually-hidden" id="theme-status" role="status" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-copy">
+        <h1 id="hero-title">Juke Client</h1>
+        <p class="intro">Independent Minecraft: Java Edition launcher for Windows · macOS and Linux planned</p>
+        <p class="lede">Versions, profiles, loaders and mods in one window. Requires a Microsoft account that owns Minecraft: Java Edition.</p>
+        <div class="hero-actions">
+          <button class="button primary" type="button" aria-disabled="true" aria-describedby="download-status">
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12M7.5 11.5 12 16l4.5-4.5"/><path d="M5 16v4h14v-4"/></svg>
+            Download for Windows
+          </button>
+        </div>
+        <p class="hero-note" id="download-status">In development — Windows build first</p>
+      </div>
+
+      <div class="container screenshot-wrap">
+        <div class="panel screenshot-panel">
+          <picture class="screenshot-picture" data-screenshot-picture>
+            <source data-screenshot-source="avif-dark" type="image/avif" media="(prefers-color-scheme: dark)" srcset="assets/app-screenshot-700.avif 700w, assets/app-screenshot-1400.avif 1400w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1128px) calc(100vw - 60px), 1068px">
+            <source data-screenshot-source="webp-dark" type="image/webp" media="(prefers-color-scheme: dark)" srcset="assets/app-screenshot-700.webp 700w, assets/app-screenshot-1400.webp 1400w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1128px) calc(100vw - 60px), 1068px">
+            <source data-screenshot-source="png-dark" type="image/png" media="(prefers-color-scheme: dark)" srcset="assets/app-screenshot-700.png 700w, assets/app-screenshot.png 1400w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1128px) calc(100vw - 60px), 1068px">
+            <source data-screenshot-source="avif-light" type="image/avif" srcset="assets/app-screenshot-light-700.avif 700w, assets/app-screenshot-light-1400.avif 1400w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1128px) calc(100vw - 60px), 1068px">
+            <source data-screenshot-source="webp-light" type="image/webp" srcset="assets/app-screenshot-light-700.webp 700w, assets/app-screenshot-light-1400.webp 1400w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1128px) calc(100vw - 60px), 1068px">
+            <img class="screenshot" data-screenshot src="assets/app-screenshot-light.png" srcset="assets/app-screenshot-light-700.png 700w, assets/app-screenshot-light.png 1400w" sizes="(max-width: 640px) calc(100vw - 44px), (max-width: 1128px) calc(100vw - 60px), 1068px" width="1400" height="760" alt="Juke Client Play screen showing a Minecraft Java Edition version with the Fabric loader" decoding="async" fetchpriority="high">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="features-title">What it does</h2>
+          <p class="section-lead">The parts of a launcher you actually use.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/><path d="m17 15 3 3-3 3"/></svg></span>
+            <h3>Mods and modpacks</h3>
+            <p>Browse Modrinth, import modpacks and manage the files that belong to each profile.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2"/></svg></span>
+            <h3>Isolated profiles</h3>
+            <p>Keep game versions, mods, resource packs, shaders and worlds in separate game directories.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span>
+            <h3>Built for speed</h3>
+            <p>A lean Rust core keeps it light and fast — up to ten times faster than the most popular launchers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="details" aria-labelledby="details-title">
+      <div class="container details-layout">
+        <div class="section-heading">
+          <h2 id="details-title">Details</h2>
+        </div>
+        <div class="details-grid">
+          <article class="detail-card">
+            <h3>Current status</h3>
+            <p class="version-line">Development build <span>downloads not open yet</span></p>
+            <p>The Tauri/Rust rewrite added isolated profiles, loaders, modpack import, Java runtime downloads and a signed updater.</p>
+            <a href="changelog.html">Read the changelog</a>
+          </article>
+          <article class="detail-card">
+            <h3>Requirements</h3>
+            <ul class="detail-list">
+              <li>Windows 10 or 11 for the first public build; macOS and Linux builds are planned.</li>
+              <li>A compatible Java runtime, or let the launcher download one.</li>
+              <li>An internet connection for Microsoft sign-in, downloads and update checks.</li>
+              <li>A Microsoft account that owns Minecraft: Java Edition.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="questions" aria-labelledby="questions-title">
+      <div class="container questions-layout">
+        <div class="section-heading sticky-heading">
+          <h2 id="questions-title">Questions</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Is this an official Minecraft launcher?</summary>
+            <p>No. Juke Client is independent. <strong>NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</strong></p>
+          </details>
+          <details>
+            <summary>Is Juke Client free and is the source open?</summary>
+            <p>Public builds are intended to be free. The launcher is proprietary with no open-source license; the public <code>Juke-Client-Info</code> repository contains project information only, and <code>Juke-Client-Releases</code> contains release assets only.</p>
+          </details>
+          <details>
+            <summary>Can I use an offline or cracked account?</summary>
+            <p>No. Sign-in uses a Microsoft account that owns Minecraft: Java Edition. Offline and cracked accounts are not supported.</p>
+          </details>
+          <details>
+            <summary>Which Minecraft versions and loaders are supported?</summary>
+            <p>Juke Client launches Java Edition profiles with Vanilla, Fabric, Forge, NeoForge or Quilt, using versions from the official version list where available.</p>
+          </details>
+          <details>
+            <summary>Does the launcher collect telemetry?</summary>
+            <p>No. There is no analytics or telemetry. Network requests are limited to Microsoft sign-in, Mojang version metadata and game downloads, Java runtime downloads when needed, loader metadata and files (Fabric, Forge, NeoForge and Quilt), mod catalogs, release news and update checks. See the <a href="privacy.html">privacy page</a> for the service list.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section community-section" id="community" aria-labelledby="community-title">
+      <div class="container">
+        <div class="community-head">
+          <div class="section-heading">
+            <h2 id="community-title">Community</h2>
+            <p class="section-lead">Where to find us and ask questions.</p>
+          </div>
+          <div class="rail-tools">
+            <div class="rail-buttons">
+              <button class="rail-button" type="button" data-scroll-prev aria-label="Scroll community links left">
+                <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+              </button>
+              <button class="rail-button" type="button" data-scroll-next aria-label="Scroll community links right">
+                <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="social-scroller" role="region" aria-label="Community links" tabindex="0" data-social-scroller>
+          <a class="social-card" href="https://discord.gg/7H2fPjX3np" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon"><svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></span>
+            <span class="social-copy"><strong>Discord</strong><span>Join the chat</span></span>
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+          <a class="social-card" href="https://www.youtube.com/@JukeClient" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon"><svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+            <span class="social-copy"><strong>YouTube</strong><span>@JukeClient</span></span>
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+          <a class="social-card" href="https://www.tiktok.com/@jukeclient" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon"><svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
+            <span class="social-copy"><strong>TikTok</strong><span>@jukeclient</span></span>
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+          <a class="social-card" href="https://x.com/JukeClient" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon"><svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></span>
+            <span class="social-copy"><strong>X (Twitter)</strong><span>@JukeClient</span></span>
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+          <a class="social-card" href="https://github.com/dolome/Juke-Client-Info" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon"><svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
+            <span class="social-copy"><strong>GitHub</strong><span>Information repository</span></span>
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+          <a class="social-card" href="https://www.reddit.com/user/JukeClient/" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon"><svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v.002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016.64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z"/></svg></span>
+            <span class="social-copy"><strong>Reddit</strong><span>u/JukeClient profile</span></span>
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+          <a class="social-card" href="https://t.me/+VQWw-lqAehY3ZDhi" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon"><svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
+            <span class="social-copy"><strong>Telegram</strong><span>Juke Client chat</span></span>
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="#top">
+          <img src="assets/juke-icon.png" alt="" width="22" height="22">
+          <span>Juke Client</span>
+        </a>
+        <p>A small launcher for Minecraft: Java Edition.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="changelog.html">Changelog</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 dolome. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>"Minecraft" is a trademark of Mojang Synergies AB.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
